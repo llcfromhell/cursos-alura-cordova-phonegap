@@ -7,6 +7,10 @@
     transform: translateX(-50%);
 }
 
+.menu {
+    margin-bottom: 100px;
+}
+
 .container-menus .menu {
     float: left;
     width: 50%;
@@ -48,7 +52,7 @@ label {
     width: 50%;
     position: fixed;
     bottom: 0;
-    z-index: 
+    z-index: 1;
 }
 
     label[for=opcao-bolos] {
