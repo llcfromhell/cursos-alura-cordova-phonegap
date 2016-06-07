@@ -11,6 +11,10 @@
     margin-bottom: 100px;
 }
 
+.menu {
+    width: 100%;
+}
+
 .container-menus .menu {
     float: left;
     width: 50%;
