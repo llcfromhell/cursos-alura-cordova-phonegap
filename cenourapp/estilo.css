@@ -3,7 +3,24 @@
     display: none;
 }
 
-.menu {
+#opcao-bebidas:checked ~ .container-menus {
+    transform: translateX(-50%);
+}
+
+.container-menus .menu {
+    float: left;
+    width: 50%;
+}
+
+.container-menus {
+    transform: translateX(0);
+    transition: transform 300ms ease;
+    width: 200%;
+}
+
+html,
+body {
+    overflow-x: hidden;
     width: 100%;
 }
 
