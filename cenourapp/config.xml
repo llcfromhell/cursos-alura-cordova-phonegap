@@ -2,7 +2,7 @@
 <widget 
     xmlns="http://www.w3.org/ns/widgets" 
     xmlns:gap="http://phonegap.com/ns/1.0"
-    version="1.0.0"
+    version="1.0.1"
     id="net.lorenscode.cenourapp">
     
     <name>So de Cenoura</name>
@@ -12,4 +12,21 @@
     <author href="http://www.github.com./llcfromhell" email="llc.from.hell@gmail.com">
         Lourenço
     </author>
+    
+    <gap:platform name="android" />
+    
+    <!-- plugins -->
+    <plugin name="cordova-plugin-splashscreen" />
+    
+    <!-- preferences -->
+    <preference name="orientation" value="portrait" />
+    <preference name="fullscreen" value="true" />
+    <preference name="permissions" value="none" />
+    
+    <!-- imgs -->
+    <icon src="icon.png" />
+    <splash src="splash.png" />
+    
+    
+    
 </widget>
