@@ -1,3 +1,8 @@
+function adicionaBadge(element, count) {
+	$badge = $('<span class="badge right blue white-text">'+count+'</span>');
+	$badge.appendTo(element);
+}
+
 // adiciona item no pedido
 $('.collection-item').on('click', function() {
 	
@@ -5,8 +10,7 @@ $('.collection-item').on('click', function() {
 
 	if ($badge.length == 0) {
 
-		$badge = $('<span class="badge right blue white-text">0</span>');
-		$badge.appendTo(this);
+		adicionaBadge(this, 1);
 
 	}
 
@@ -36,8 +40,21 @@ $('#confirmar').on('click', function() {
 })
 
 // remove item do pedido
-$('.collection-item').on('click', '.badge', function(){
-    $(this).remove();
+$('.collection-item').on('click', '.badge', function(event){
+    
+    var produtoItem = $(this).parent().first();
+    nomeProduto = produtoItem.children().remove().end().text();
+
+    var count = parseInt($(this).text()) -1;
+
+	if (count > 0) {
+
+    	adicionaBadge(produtoItem, count);
+
+	} 
+
+    Materialize.toast(nomeProduto + ' removido', 1000);
+
     return false;
 });
 
