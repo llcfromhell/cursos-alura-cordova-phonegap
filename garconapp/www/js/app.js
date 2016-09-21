@@ -1,5 +1,5 @@
 function adicionaBadge(element, count) {
-	$badge = $('<span class="badge right blue white-text">'+count+'</span>');
+	$badge = $('<span class="badge right brown white-text">'+count+'</span>');
 	$badge.appendTo(element);
 }
 
@@ -60,11 +60,26 @@ $('.collection-item').on('click', '.badge', function(event){
 
 // limpar formulário
 $('.acao-limpar').on('click', function() {
-	$('#numero-mesa').val('');
+	$('#nroMesa').val('');
 	$('.badge').remove();
 })
 
 // inicia o modal
 $('.modal-trigger').leanModal({
 	in_duration : 600
+});
+
+// leitor qrcode
+$('.scan-qrcode').on('click', function(){
+    cordova.plugins.barcodeScanner.scan(
+       function (resultado) {
+           if (resultado.text) {
+               Materialize.toast('Mesa ' + resultado.text, 2000);
+               $('#nroMesa').val(resultado.text);
+           }
+       },
+       function (error) {
+           Materialize.toast('Erro: ' + error, 3000, 'red-text');
+       }
+    );
 });
