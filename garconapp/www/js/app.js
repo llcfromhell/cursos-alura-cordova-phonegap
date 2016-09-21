@@ -65,4 +65,6 @@ $('.acao-limpar').on('click', function() {
 })
 
 // inicia o modal
-$('.modal-trigger').leanModal();
+$('.modal-trigger').leanModal({
+	in_duration : 600
+});
