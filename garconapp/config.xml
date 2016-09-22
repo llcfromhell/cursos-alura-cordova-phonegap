@@ -6,6 +6,8 @@
     <author email="llc.from.hell@gmail.com" href="http://www.github.com/llcfromhell">Lourenço Cunha
     </author>
     <plugin name="cordova-plugin-whitelist" spec="1" />
+    <access origin="*"/>
+    <allow-intent href="tel:*" />
     <preference name="Orientation" value="portrait" />
     <preference name="Fullscreen" value="false" />
     <preference name="DisallowOverscroll" value="true" />

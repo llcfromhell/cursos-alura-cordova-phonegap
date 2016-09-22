@@ -1,23 +1,28 @@
 function adicionaBadge(element, count) {
-	$badge = $('<span class="badge right brown white-text">'+count+'</span>');
-	$badge.appendTo(element);
+	var newBadge = $('<span class="badge right brown white-text">'+count+'</span>');
+	newBadge.appendTo(element);
+}
+
+function limpar() {
+	$('#nroMesa').val('');
+	$('.badge').remove();
 }
 
 // adiciona item no pedido
 $('.collection-item').on('click', function() {
 	
-	var $badge = $('.badge', this);
+	var badge = $('.badge', this);
 
-	if ($badge.length == 0) {
+	if (badge.length == 0) {
 
 		adicionaBadge(this, 1);
 
 	}
 
-	$badge.text(parseInt($badge.text())+1);
+	badge.text(parseInt(badge.text())+1);
 
 	var nomeProduto = this.firstChild.textContent;
-	Materialize.toast(nomeProduto + ' adicionado', 1000);
+	Materialize.toast(nomeProduto + ' adicionado', 3000);
 
 }) 
 
@@ -53,15 +58,14 @@ $('.collection-item').on('click', '.badge', function(event){
 
 	} 
 
-    Materialize.toast(nomeProduto + ' removido', 1000);
+    Materialize.toast(nomeProduto + ' removido', 2000, 'red-text');
 
     return false;
 });
 
 // limpar formulário
-$('.acao-limpar').on('click', function() {
-	$('#nroMesa').val('');
-	$('.badge').remove();
+$('.acao-limpar').on('click', function(){
+	limpar();
 })
 
 // inicia o modal
@@ -74,7 +78,7 @@ $('.scan-qrcode').on('click', function(){
     cordova.plugins.barcodeScanner.scan(
        function (resultado) {
            if (resultado.text) {
-               Materialize.toast('Mesa ' + resultado.text, 2000);
+               Materialize.toast('Mesa ' + resultado.text, 3000);
                $('#nroMesa').val(resultado.text);
            }
        },
@@ -83,3 +87,23 @@ $('.scan-qrcode').on('click', function(){
        }
     );
 });
+
+
+$('.acao-finalizar').on('click', function (){
+	
+	$.ajax({
+		url: 'http://cozinhapp.sergiolopes.org' + '/novo-pedido',
+		data: {
+			mesa: $('#nroMesa').val(),
+			pedido: $('#resumo').text()
+		},
+		success: function(resposta) {
+			Materialize.toast(resposta, 2000, 'green-text');
+			limpar();
+		},
+		error: function(erro) {
+			Materialize.toast(erro, 5000, 'red-text');
+		}
+	})
+
+})
