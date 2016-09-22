@@ -6,7 +6,7 @@
     <author email="llc.from.hell@gmail.com" href="http://www.github.com/llcfromhell">Lourenço Cunha
     </author>
     <plugin name="cordova-plugin-whitelist" spec="1" />
-    <access origin="*"/>
+    <access origin="*" />
     <allow-intent href="tel:*" />
     <preference name="Orientation" value="portrait" />
     <preference name="Fullscreen" value="false" />
@@ -46,4 +46,5 @@
     <plugin name="phonegap-plugin-barcodescanner" spec="~6.0.2">
         <variable name="CAMERA_USAGE_DESCRIPTION" value=" " />
     </plugin>
+    <plugin name="cordova-plugin-vibration" spec="~2.1.2" />
 </widget>

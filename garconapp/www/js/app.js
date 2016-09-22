@@ -24,6 +24,8 @@ $('.collection-item').on('click', function() {
 	var nomeProduto = this.firstChild.textContent;
 	Materialize.toast(nomeProduto + ' adicionado', 3000);
 
+	navigator.vibrate(300);
+
 }) 
 
 // monta resumo para confirmar
@@ -88,7 +90,6 @@ $('.scan-qrcode').on('click', function(){
     );
 });
 
-
 $('.acao-finalizar').on('click', function (){
 	
 	$.ajax({
@@ -99,6 +100,7 @@ $('.acao-finalizar').on('click', function (){
 		},
 		success: function(resposta) {
 			Materialize.toast(resposta, 2000, 'green-text');
+			navigator.vibrate(1000);
 			limpar();
 		},
 		error: function(erro) {
